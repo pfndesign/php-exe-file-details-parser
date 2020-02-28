@@ -1,7 +1,7 @@
 <?php
 /**
  * parse windows file details
- *
+ * version 1.1
  * get file full details like (CompanyName,FileDescription,FileVersion,InternalName,LegalCopyright,...)
  * @author peyman farahmand <pfndesigen@gmail.com>
  * @From Iran / Mashhad
@@ -74,10 +74,14 @@ class filedetailsparser
     private function getdetailsblock()
     {
         $contents = filter_var($this->filedata, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_LOW);
+        //echo $contents;
+        //die();
         if (preg_match('/CompanyName([^{$]*)VarFileInfo/', $contents, $contents_fileinfo)) {
             $detailstring = $contents_fileinfo[1];
         } elseif (preg_match('/CompanyName([^{]*)VarFileInfo/', $contents, $contents_fileinfo)) {
             $detailstring = $contents_fileinfo[1];
+        } elseif (preg_match('/CompanyName([^{]*){/', $contents, $contents_fileinfo)) { //notepad++ fix
+              $detailstring = $contents_fileinfo[1];
         } else {
             throw new Exception("details block was not found");
         }
