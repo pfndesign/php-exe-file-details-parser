@@ -64,5 +64,5 @@ $data = $filedetails->getdatalist($keylist,$type);
 - ProductPrivatePart
 - SpecialBuild
 
-* note : not all of these properties are available for all .exe or .dll files.
+### note : not all of these properties are available for all .exe or .dll files.
 github : https://github.com/pfndesign/php-exe-file-details-parser
