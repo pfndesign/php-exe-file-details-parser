@@ -38,6 +38,8 @@ $data = $filedetails->getdatalist($keylist,$type);
 - productshortName
 - lastchange
 - legaltrademarks
+- LegalTrademarks1
+- LegalTrademarks2
 - buildid
 - updatesystemversion
 - source control id
