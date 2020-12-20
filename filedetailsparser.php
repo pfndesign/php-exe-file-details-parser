@@ -30,27 +30,25 @@ class filedetailsparser
     'BuildID',
     'UpdateSystemVersion',
     'Source Control ID',
-    'FileSize'
-  ];
-    private $enddetailslist=[
-    '#CompanyName',
-    '#FileDescription',
-    '#FileVersion',
-    '#InternalName',
-    '#LegalCopyright',
-    '#OriginalFilename',
-    '#ProductName',
-    '#ProductVersion',
-    '#CompanyShortName',
-    '#ProductShortName',
-    '#LastChange',
-    '#LegalTrademarks',
-    '#LegalTrademarks1',
-    '#LegalTrademarks2',
-    '#BuildID',
-    '#UpdateSystemVersion',
-    '#Source Control ID',
-    '#FileSize'
+    'FileSize',
+    'Comments',
+    'FileBuildPart',
+    'FileMajorPart',
+    'FileMinorPart',
+    'FileName',
+    'FilePrivatePart',
+    'IsDebug',
+    'IsPatched',
+    'IsPreRelease',
+    'IsPrivateBuild',
+    'IsSpecialBuild',
+    'Language',
+    'PrivateBuild',
+    'ProductBuildPart',
+    'ProductMajorPart',
+    'ProductMinorPart',
+    'ProductPrivatePart',
+    'SpecialBuild',
   ];
     private $filedata;
     private $detailstring;
@@ -89,7 +87,7 @@ class filedetailsparser
         } else {
             throw new Exception("details block was not found");
         }
-        $detailstring = str_replace($this->detailslist, $this->enddetailslist, $detailstring);
+        $detailstring = str_replace($this->detailslist, array_map(function($value) { return '#'.$value; }, $this->detailslist), $detailstring);
         $detailstring = filter_var("CompanyName".$detailstring."#", FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_HIGH);
         $this->detailstring = $detailstring;
     }
