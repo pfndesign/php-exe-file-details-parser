@@ -43,3 +43,5 @@ $data = $filedetails->getdatalist($keylist,$type);
 - source control id
 - filesize
 - pathinfo
+
+github : https://github.com/pfndesign/php-exe-file-details-parser
